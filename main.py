@@ -20,7 +20,11 @@ from tkinter import messagebox
 class Array:
     def __init__(self, n,max_sum):
         if n <= 0:
+            messagebox.showerror("Ошибка", "Размер массива должен быть больше 0")
             raise ValueError("Размер массива должен быть больше 0")
+        if n>= 15:
+            messagebox.showerror("Ошибка", "Слишком большое число")
+            raise ValueError("Слишком большое число")
 
         self.n = n
 
@@ -35,6 +39,7 @@ class Array:
 
     def variants(self):
         if self.max_sum < sum(x for x in self.arr if x > 0):
+            messagebox.showerror("Ошибка", "Максимальная сумма не может быть меньше суммы положительных элементов")
             raise ValueError("Максимальная сумма не может быть меньше суммы положительных элементов")
 
         variants = []
@@ -89,4 +94,5 @@ label_output = tk.Label(window, text="")
 label_output.pack()
 window.mainloop()
 
+   
 
